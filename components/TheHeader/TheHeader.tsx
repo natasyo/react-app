@@ -44,6 +44,7 @@ export const TheHeader = () => {
         <ButtonBar
           isOpen={isOpenBar}
           onClick={() => setIsOpenBar(!isOpenBar)}
+          classname={headerStyle.header__buttonBar}
         />
       </div>
     </header>
