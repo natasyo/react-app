@@ -6,8 +6,9 @@ import { MouseEventHandler } from "react";
 type Props = {
   isOpen: boolean;
   onClick?: MouseEventHandler;
+  classname?: string;
 };
-export const ButtonBar = ({ isOpen, onClick }: Props) => {
+export const ButtonBar = ({ isOpen, onClick, classname }: Props) => {
   return (
     <button
       className={`${styleBtn.buttonBar} ${
@@ -17,7 +18,7 @@ export const ButtonBar = ({ isOpen, onClick }: Props) => {
     >
       <span className={`${styleBtn.buttonBar__line}`}></span>
       <span className={`${styleBtn.buttonBar__line}`}></span>
-      <span className={`${styleBtn.buttonBar__line}`}></span>
+      <span className={`${styleBtn.buttonBar__line} ${classname}`}></span>
     </button>
   );
 };
