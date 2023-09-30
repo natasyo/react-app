@@ -1,0 +1,24 @@
+@import "app/variables";
+
+.requestForm{
+  &__header{
+    margin-bottom: 16px;
+  }
+  &__text{
+    margin-bottom: 46px;
+  }
+  &__button{
+    margin-top: 39px;
+    margin-bottom: 28px;
+    width: 100%;
+  }
+  &__btnLink{
+    color: $color-white;
+    text-align: center;
+    svg{
+      path{
+        fill: $color-white;
+      }
+    }
+  }
+}

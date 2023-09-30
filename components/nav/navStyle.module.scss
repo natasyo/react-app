@@ -1,0 +1,41 @@
+@import "../../app/variables";
+
+.menu {
+  &__wrap {
+    display: flex;
+  }
+  &__item {
+    margin: 0 16px;
+    &:last-child {
+      margin-right: 0;
+    }
+    :first-child {
+      margin-left: 0;
+    }
+  }
+  &__link {
+    /* Body 2 */
+    font-family: $font-family;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1em;
+    line-height: 28px;
+    /* or 175% */
+    text-decoration: none;
+    color: #bbbbcb;
+    &_active {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .menu{
+    &__wrap{
+      flex-direction: column;
+    }
+    &__item {
+      margin: 16px;
+    }
+  }
+}

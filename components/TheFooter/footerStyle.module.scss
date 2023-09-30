@@ -1,0 +1,105 @@
+@import "../../app/variables";
+.footer {
+  &__main {
+    background-color: $blue;
+    padding-top: 104px;
+    color: $color-white;
+  }
+  &__container {
+    display: flex;
+  }
+  &__left {
+    max-width: 517px;
+    margin-right: 142px;
+  }
+  &__logo {
+    margin-bottom: 23px;
+    margin-top: 8px;
+  }
+  &__text {
+    font-weight: 400;
+    max-width: 399px;
+  }
+  &__contacts {
+    padding: 17px 37px;
+    display: flex;
+    background-color: $color-yellow;
+    width: 517px;
+    color: $color-dark-blue;
+    margin-top: 86px;
+    & a {
+      color: $color-dark-blue;
+      text-decoration: none;
+      line-height: 28px;
+      opacity: 0.8;
+    }
+  }
+  &__email {
+    margin-right: 29px;
+  }
+  &__contactsHeader {
+    margin-bottom: 1px;
+  }
+  &__right {
+  }
+  &__header {
+    margin-bottom: 14px;
+  }
+  &__socials {
+    display: flex;
+  }
+  &__socialsItem {
+    margin-right: 26.67px;
+  }
+
+  &__bottom {
+    padding: 32px 0;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+  &__bottomContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__menu{
+    a{
+      color: $color-dark-blue;
+    }
+
+  }
+}
+@media screen and (max-width: 991px) {
+
+  .footer{
+    &__menu{
+      display: none;
+    }
+    &__left{
+      max-width: 50%;
+      margin-right: 32px;
+    }
+    &__contacts{
+      max-width: 100%;
+      flex-direction: column;
+    }
+    &__email{
+      margin-right: 0;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footer{
+    &__container{
+      flex-direction: column-reverse;
+    }
+    &__left{
+      margin-right: 0;
+      max-width: 100%;
+      margin-top: 64px;
+    }
+  }
+}

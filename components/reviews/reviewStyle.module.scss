@@ -1,0 +1,84 @@
+@import "../../app/variables";
+.review {
+  &__items {
+
+  }
+  &__button {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+
+    background-color: $color-white;
+    bottom: 0;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_next{
+      right: 0;
+    }
+    &_prev{
+      right: 50px;
+    }
+    transition: 0.3ms ease all;
+    svg {
+      path {
+        fill: $color-dark-blue;
+        opacity: 0.6;
+      }
+    }
+    &:hover{
+      background-color: $color-blue-arrow;
+      transition: 0.3ms ease all;
+      svg {
+        path {
+          fill: $color-white;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &__header {
+    margin-bottom: 48px;
+    text-align: left;
+  }
+  &__user {
+    display: flex;
+  }
+  &__userInfo {
+    text-align: left;
+  }
+  &__photo {
+    border-radius: 50%;
+    height: 52px;
+    width: 52px;
+    overflow: hidden;
+    margin-right: 14px;
+  }
+  &__userName {
+    color: $color-dark-blue;
+    font-family: $font-family;
+    font-size: 1.125em;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 177.778%; /* 177.778% */
+    margin-bottom: -4px;
+  }
+  &__userPosition {
+    color: $color-dark-blue;
+    font-family: $font-family;
+    font-size: 0.75em;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 233.333%; /* 233.333% */
+  }
+  & .control-arrow {
+    height: 48px;
+    width: 48px;
+    background: $color-white;
+    border-radius: 50%;
+    display: block;
+  }
+}

@@ -1,0 +1,54 @@
+@import "../../app/variables";
+
+.header {
+  background: $blue;
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__contacts {
+    margin-left: 48px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .header {
+    &__right {
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      background-color: $color-yellow;
+      color: $color-dark-blue;
+      padding: 36px;
+      height: 100%;
+      transition: 0.5s ease-in-out all;
+      &_open {
+        right: 0;
+        transition: 0.5s ease-in-out all;
+      }
+      a {
+        color: $color-dark-blue;
+      }
+    }
+    &__contacts {
+      color: $color-dark-blue !important;
+      margin: 0;
+      border-color: $color-dark-blue !important;
+    }
+  }
+}

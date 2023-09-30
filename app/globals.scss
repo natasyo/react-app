@@ -1,0 +1,171 @@
+@use "scss-reset/reset";
+@import "./variables";
+
+body {
+  font-family: $font-family-2;
+  color: $color-dark-blue;
+}
+.container {
+  max-width: 1296px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+.h1,
+h1 {
+  font-family: $font-family;
+  font-size: 3.375em;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 137.037%;
+}
+h2,
+.h2 {
+  font-family: $font-family;
+  font-size: 3em;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 133.333%;
+}
+h3,
+.h3 {
+  font-family: $font-family;
+  font-size: 2.375em;
+  font-style: normal;
+  font-weight: 600;
+  line-height:147.368%;
+  margin-bottom:12px ;
+}
+h4,
+.h4 {
+  font-family: $font-family;
+  font-size: 2.25em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 155.556%;
+}
+h5,
+.h5 {
+  font-family: $font-family;
+  font-size: 2em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+h6,
+.h6 {
+  font-family: $font-family;
+  font-size: 1.5em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+p {
+  font-family: $font-family;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 175%;
+  margin-bottom: 24px;
+}
+
+.text-size-large {
+  font-family: $font-family;
+  font-size: 1.5em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 36px */
+}
+.text-size-medium {
+  font-family: $font-family;
+  font-size: 1.125em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+.text-size-medium-bold {
+  font-family: $font-family;
+  font-size: 1.125em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+.text-size-regular {
+  font-family: $font-family;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+.text-size-tiny {
+  font-family: $font-family;
+  font-size: 0.75em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+.text-style-quote {
+  font-family: $font-family;
+  font-size: 1.5em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+//button
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 48px;
+  border: 2px solid;
+  border-radius: 40px;
+  font-family: $font-family;
+  background: $color-yellow;
+  color: #1b1c2a;
+  height: 64px;
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 177.778%;
+  letter-spacing: 0;
+
+  &_contacts {
+    border-color: rgba(244, 246, 252, 0.2);
+    color: $color-white;
+    border-radius: 41px;
+    background: transparent;
+  }
+}
+
+.btn-link {
+  font-family: $font-family;
+  color: $color-royal-blue;
+  font-size: 1.125em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 175%;
+  text-decoration: none;
+  display: block;
+  & svg {
+    margin-left: 12px;
+  }
+  &_yellow {
+    font-size: 1em;
+    color: $color-yellow;
+    & svg {
+      margin-left: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 991px){
+  body{
+    font-size: 14px;
+  }
+}

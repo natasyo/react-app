@@ -1,0 +1,67 @@
+@import "../../app/variables";
+.questions {
+  &__item {
+    display: flex;
+    padding: 32px 0;
+    position: relative;
+    align-items: flex-start;
+    &:not(:last-of-type) {
+      border-bottom: 2px solid $color-gray-border;
+    }
+    &:first-of-type {
+      padding-top: 0;
+    }
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+    &_open {
+      .questions__button {
+        svg {
+          transform: rotate(45deg);
+          transition: 0.3s ease all;
+        }
+      }
+      .questions__text {
+        max-height: 100px;
+        transition: 0.3s ease all;
+      }
+    }
+  }
+  &__button {
+    margin-top: 5px;
+    svg {
+      transition: 0.3s ease all;
+    }
+  }
+  &__number {
+    color: $color-royal-blue;
+    margin-right: 59px;
+  }
+  &__text {
+    margin-bottom: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s ease all;
+  }
+  &__content {
+    max-width: 624px;
+  }
+  &__header {
+    margin-bottom: 16px;
+  }
+}
+@media screen and (max-width: 1280px){
+  .questions{
+    &__number{
+      margin-right: 1.5em;
+    }
+  }
+}
+
+@media screen and (max-width: 991px){
+  .questions{
+    &__item{
+      padding: 24px 0;
+    }
+  }
+}
