@@ -13,12 +13,12 @@ export const ButtonBar = ({ isOpen, onClick, classname }: Props) => {
     <button
       className={`${styleBtn.buttonBar} ${
         !isOpen ? styleBtn.buttonBar_isOpen : styleBtn.buttonBar_isClose
-      }`}
+      } ${classname}`}
       onClick={onClick}
     >
       <span className={`${styleBtn.buttonBar__line}`}></span>
       <span className={`${styleBtn.buttonBar__line}`}></span>
-      <span className={`${styleBtn.buttonBar__line} ${classname}`}></span>
+      <span className={`${styleBtn.buttonBar__line} `}></span>
     </button>
   );
 };
