@@ -1,0 +1,20 @@
+query getPost($slug: String) {
+  postBy(slug: $slug) {
+    id
+    content
+    date
+    featuredImage {
+      node {
+        id
+        altText
+        mediaDetails {
+          height
+          width
+        }
+        guid
+        title
+      }
+    }
+    title
+  }
+}

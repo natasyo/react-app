@@ -1,19 +1,19 @@
-import React from "react";
 import styleFooter from "./footerStyle.module.scss";
 import Image from "next/image";
 import Logo from "@/public/Logo.png";
 import Link from "next/link";
 import TheNav from "@/components/nav/TheNav.tsx";
+import {
+  GetMainMenuDocument,
+  GetMainMenuQuery,
+} from "@/generates/gql/graphql.ts";
+import { clientApollo } from "@/api/apolloClient.ts";
 
-const TheFooter = () => {
-  const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "About us", href: "/about" },
-    { label: "Features", href: "/features" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "FAQ", href: "/faq" },
-    { label: "Blog", href: "/blog" },
-  ];
+async function TheFooter() {
+  const menu:
+    | Array<NonNullable<GetMainMenuQuery["menuItems"]>["edges"][0]>
+    | undefined = (await clientApollo.query({ query: GetMainMenuDocument }))
+    .data.menuItems?.edges;
   return (
     <footer className={styleFooter.footer}>
       <div className={styleFooter.footer__main}>
@@ -170,11 +170,15 @@ const TheFooter = () => {
       <div className={styleFooter.footer__bottom}>
         <div className={`container ${styleFooter.footer__bottomContainer}`}>
           <p>Copyright 2022, Finsweet.com</p>
-          <TheNav navLinks={navLinks} className={styleFooter.footer__menu} />
+          {menu ? (
+            <TheNav navLinks={menu} className={styleFooter.footer__menu} />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </footer>
   );
-};
+}
 
 export default TheFooter;

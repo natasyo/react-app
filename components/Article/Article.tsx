@@ -1,33 +1,53 @@
 import React from "react";
 import articleStyle from "./article.module.scss";
 import Image from "next/image";
-import { IArticle } from "@/types";
 import Link from "next/link";
+import { GetPostsQuery } from "@/generates/gql/graphql.ts";
+import NoImage from "../../public/no-image.jpg";
 
 type Props = {
   className?: string;
-  article: IArticle;
+  article: NonNullable<GetPostsQuery["posts"]>["edges"][0];
 };
-const Article = ({ className, article }: Props) => {
-  function toDate(date: Date) {
-    const dateString = date.toDateString().split(" ");
-    return `${dateString[2]} ${dateString[1]} ${dateString[3]}`;
-  }
+function Article({ className, article }: Props) {
+  // function toDate(date: Date) {
+  //   const dateString = date.toDateString().split(" ");
+  //   return `${dateString[2]} ${dateString[1]} ${dateString[3]}`;
+  // }
   return (
     <div className={`${className} ${articleStyle.article}`}>
       <div className={`${articleStyle.article__imageWrap}`}>
-        <Image
-          src={article.image}
-          width={article.image.width}
-          height={article.image.height}
-          alt={article.title}
-          className={articleStyle.article__image}
-        />
+        {article.node.featuredImage?.node.link ? (
+          <Image
+            src={article.node.featuredImage.node.guid!}
+            width={article.node.featuredImage.node.mediaDetails!.width!}
+            height={article.node.featuredImage.node.mediaDetails!.height!}
+            alt={article.node.featuredImage.node.altText || ""}
+            className={articleStyle.article__image}
+          />
+        ) : (
+          <Image
+            src={NoImage}
+            width={NoImage.width}
+            height={NoImage.height}
+            alt={"no image"}
+            className={articleStyle.article__image}
+          />
+        )}
       </div>
-      <p className={`${articleStyle.article__date}`}>{toDate(article.date)}</p>
-      <p className={`h6 ${articleStyle.article__header}`}>{article.title}</p>
-      <p className={articleStyle.article__preview}>{article.content}</p>
-      <Link href={"/"} className={`btn-link ${articleStyle.article__link}`}>
+      <p className={`${articleStyle.article__date}`}>{article.node.date}</p>
+      <p className={`h6 ${articleStyle.article__header}`}>
+        {article.node.title}
+      </p>
+      <div
+        className={articleStyle.article__preview}
+        dangerouslySetInnerHTML={{ __html: article.node.excerpt || "<p></p>" }}
+      />
+
+      <Link
+        href={`/blog${article.node.uri}`}
+        className={`btn-link ${articleStyle.article__link}`}
+      >
         Read More
         <svg
           width="25"
@@ -44,6 +64,6 @@ const Article = ({ className, article }: Props) => {
       </Link>
     </div>
   );
-};
+}
 
 export default Article;

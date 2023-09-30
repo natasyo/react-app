@@ -1,0 +1,27 @@
+query GetPosts ($first:Int){
+    posts(first: $first) {
+        edges {
+            node {
+                id
+                date
+                title
+                uri
+                excerpt
+                isPreview
+                slug
+                featuredImage {
+                    node {
+                        guid
+                        link
+                        caption
+                        mediaDetails {
+                            height
+                            width
+                        }
+                        altText
+                    }
+                }
+            }
+        }
+    }
+}

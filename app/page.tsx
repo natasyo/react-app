@@ -4,66 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reviews } from "@/components/reviews/Reviews";
 import Questions from "@/components/questions/Questions";
-import { IArticle, IQuestion } from "@/types";
 import RequestForm from "@/components/Forms/RequestForm.tsx";
 
 import Project1 from "../public/Card1.png";
 import Project2 from "../public/Card2.png";
 import Project3 from "../public/Card3.png";
-import Blog1 from "../public/blog1.png";
-import Blog2 from "../public/blog2.png";
-import Blog3 from "../public/blog3.png";
-import Article from "@/components/Article/Article.tsx";
-export default function Home() {
-  const questions: IQuestion[] = [
-    {
-      header: "How much time does it take?",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      header: "What is your class naming convention?",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      header: "How do you communicate?",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      header: "I have a bigger project. Can you handle it?",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      header: "What is your class naming convention?",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-  ];
+import { MainArticles } from "@/components/Article/MainArticles.tsx";
+import { Suspense } from "react";
+import { Loading } from "@/components/Loading/Loading.tsx";
 
-  const articles: IArticle[] = [
-    {
-      title:
-        "How one Webflow user grew his single person consultancy from $0-100K in 14 months",
-      image: Blog1,
-      date: new Date("19 Jan 2022"),
-      content:
-        "See how pivoting to Webflow changed one person’s sales strategy and allowed him to attract",
-    },
-    {
-      title:
-        "How one Webflow user grew his single person consultancy from $0-100K in 14 months",
-      image: Blog2,
-      date: new Date("19 Jan 2022"),
-      content:
-        "See how pivoting to Webflow changed one person’s sales strategy and allowed him to attract",
-    },
-    {
-      title:
-        "How one Webflow user grew his single person consultancy from $0-100K in 14 months",
-      image: Blog3,
-      date: new Date("19 Jan 2022"),
-      content:
-        "See how pivoting to Webflow changed one person’s sales strategy and allowed him to attract",
-    },
-  ];
+export default async function Home() {
   return (
     <main className={"main"}>
       <div className={styleMain.banner}>
@@ -549,7 +499,9 @@ export default function Home() {
               Contact us for more info
             </Link>
           </div>
-          <Questions questions={questions} />
+          <Suspense fallback={<Loading />}>
+            <Questions />
+          </Suspense>
         </div>
       </div>
       <div className={styleMain.contactForm}>
@@ -570,11 +522,11 @@ export default function Home() {
         </div>
       </div>
       <div className={styleMain.blog}>
-        <div className={`${styleMain.blog__container} container`}>
-          {articles.map((article, index) => {
-            return <Article article={article} key={index} />;
-          })}
-        </div>
+        <Suspense fallback={<Loading />}>
+          <div className={`${styleMain.blog__container} container`}>
+            <MainArticles />
+          </div>
+        </Suspense>
       </div>
     </main>
   );

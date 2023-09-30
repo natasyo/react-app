@@ -1,11 +1,11 @@
 import styleQuestion from "./question-style.module.scss";
-import { IQuestion } from "@/types";
 import { useState } from "react";
 
 import React from "react";
+import { GetQuestionsQuery } from "@/generates/gql/graphql.ts";
 
 type Props = {
-  question: IQuestion;
+  question: NonNullable<GetQuestionsQuery["questions"]>["nodes"][0];
   num: number;
 };
 const Question = ({ question, num }: Props) => {
@@ -23,8 +23,11 @@ const Question = ({ question, num }: Props) => {
         {num < 9 ? `0${num + 1}` : num + 1}
       </div>
       <div className={styleQuestion.questions__content}>
-        <h6 className={styleQuestion.questions__header}>{question.header}</h6>
-        <p className={styleQuestion.questions__text}>{question.text}</p>
+        <h6 className={styleQuestion.questions__header}>{question.title}</h6>
+        <div
+          className={styleQuestion.questions__text}
+          dangerouslySetInnerHTML={{ __html: question.content || "<p></p>" }}
+        />
       </div>
       <button className={styleQuestion.questions__button} onClick={onOpen}>
         <svg

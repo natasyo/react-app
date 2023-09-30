@@ -5,7 +5,7 @@ import { TextBox } from "@/components/ui/TextBox.tsx";
 import { Button } from "@/components/ui/Button.tsx";
 import Link from "next/link";
 
-const RequestForm = () => {
+function RequestForm() {
   return (
     <div className={styleForm.requestForm}>
       <h5 className={styleForm.requestForm__header}>Send inquiry</h5>
@@ -37,6 +37,6 @@ const RequestForm = () => {
       </Link>
     </div>
   );
-};
+}
 
 export default RequestForm;

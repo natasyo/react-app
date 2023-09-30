@@ -1,9 +1,14 @@
 @use "scss-reset/reset";
 @import "./variables";
 
-body {
+html,body {
   font-family: $font-family-2;
   color: $color-dark-blue;
+}
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .container {
   max-width: 1296px;

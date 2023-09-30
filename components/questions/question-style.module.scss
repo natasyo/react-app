@@ -22,8 +22,9 @@
         }
       }
       .questions__text {
-        max-height: 100px;
+        max-height: 150px;
         transition: 0.3s ease all;
+        overflow: auto;
       }
     }
   }

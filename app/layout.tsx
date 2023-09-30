@@ -6,22 +6,26 @@ import React from "react";
 
 import { Poppins, Manrope, Kenia } from "next/font/google";
 import TheFooter from "@/components/TheFooter/TheFooter.tsx";
+import { ApolloWrapper } from "@/app/ApolloWrapper.tsx";
 const poppins = Poppins({
   weight: ["300", "400", "500", "600"],
   subsets: ["latin"],
   variable: "--font-poppins",
   display: "swap",
+  preload: true,
 });
 const manrope = Manrope({
   weight: ["300", "400", "600"],
   variable: "--font-manrope",
   subsets: ["latin"],
+  preload: true,
 });
 
 const kenia = Kenia({
   weight: ["400"],
   variable: "--font-kenia",
   subsets: ["latin"],
+  preload: true,
 });
 export const metadata: Metadata = {
   title: "Create Next App111111111",
@@ -38,9 +42,11 @@ export default function RootLayout({
       <body
         className={`${kenia.variable} ${manrope.variable} ${poppins.variable}`}
       >
-        <TheHeader />
-        {children}
-        <TheFooter />
+        <ApolloWrapper>
+          <TheHeader />
+          <div>{children}</div>
+          <TheFooter />
+        </ApolloWrapper>
       </body>
     </html>
   );

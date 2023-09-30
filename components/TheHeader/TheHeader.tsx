@@ -1,22 +1,22 @@
-"use client";
 import Link from "next/link";
 import Logo from "../../public/Logo.png";
 import headerStyle from "./headerStyle.module.scss";
-import TheNav from "@/components/nav/TheNav";
 import Image from "next/image";
 
-import React, { useState } from "react";
-import { ButtonBar } from "@/components/ui/buttonBar.tsx";
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About us", href: "/about" },
-  { label: "Features", href: "/features" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Blog", href: "/blog" },
-];
-export const TheHeader = () => {
-  const [isOpenBar, setIsOpenBar] = useState(false);
+import React from "react";
+
+import {
+  GetMainMenuDocument,
+  GetMainMenuQuery,
+} from "@/generates/gql/graphql.ts";
+import { clientApollo } from "@/api/apolloClient.ts";
+import { MainMenu } from "@/components/nav/MainMenu.tsx";
+
+export async function TheHeader() {
+  const menu:
+    | Array<NonNullable<GetMainMenuQuery["menuItems"]>["edges"][0]>
+    | undefined = (await clientApollo.query({ query: GetMainMenuDocument }))
+    .data.menuItems?.edges;
   return (
     <header className={headerStyle.header}>
       <div className={headerStyle.header__container + " container"}>
@@ -29,23 +29,8 @@ export const TheHeader = () => {
             height={Logo.height}
           />
         </Link>
-        <div
-          className={`${headerStyle.header__right} ${
-            isOpenBar ? headerStyle.header__right_open : ""
-          }`}
-        >
-          <TheNav navLinks={navLinks} />
-          <button
-            className={"btn btn_contacts " + headerStyle.header__contacts}
-          >
-            Contact us
-          </button>
-        </div>
-        <ButtonBar
-          isOpen={isOpenBar}
-          onClick={() => setIsOpenBar(!isOpenBar)}
-        />
+        {menu ? <MainMenu menu={menu} /> : ""}
       </div>
     </header>
   );
-};
+}

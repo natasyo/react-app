@@ -1,0 +1,10 @@
+ query GetMainMenu {
+      menuItems(where: { location: PRIMARY }) {
+        edges {
+          node {
+            label
+            path
+          }
+        }
+      }
+    }
