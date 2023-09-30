@@ -1,5 +1,5 @@
 import styleUI from "./styleUI.module.scss";
-// @flow
+
 import * as React from "react";
 
 type Props = {

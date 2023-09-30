@@ -1,6 +1,5 @@
 import styleBtn from "./styleUI.module.scss";
 
-// @flow
 import * as React from "react";
 import { MouseEventHandler } from "react";
 
