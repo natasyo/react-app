@@ -12,6 +12,7 @@ import Project3 from "../public/Card3.png";
 import { MainArticles } from "@/components/Article/MainArticles.tsx";
 import { Suspense } from "react";
 import { Loading } from "@/components/Loading/Loading.tsx";
+import { QuestionsSection } from "@/components/questions/QuestionsSection.tsx";
 
 export default async function Home() {
   return (
@@ -486,24 +487,7 @@ export default async function Home() {
       </div>
 
       {/*  Questions*/}
-      <div className={styleMain.questions}>
-        <div className={`${styleMain.questions__container} container`}>
-          <div className={styleMain.questions__left}>
-            <h3 className={styleMain.questions__header}>
-              Frequently asked questions
-            </h3>
-            <Link
-              href={"/about"}
-              className={`text-size-medium-bold ${styleMain.questions__abouLink}`}
-            >
-              Contact us for more info
-            </Link>
-          </div>
-          <Suspense fallback={<Loading />}>
-            <Questions />
-          </Suspense>
-        </div>
-      </div>
+      <QuestionsSection />
       <div className={styleMain.contactForm}>
         <div className={`container ${styleMain.contactForm__container}`}>
           <div className={styleMain.contactForm__left}>

@@ -1,15 +1,16 @@
 import Link from "next/link";
 import Logo from "../../public/Logo.png";
 import headerStyle from "./headerStyle.module.scss";
+import TheNav from "@/components/nav/TheNav";
 import Image from "next/image";
 
-import React from "react";
-
+import React, { useState } from "react";
+import { ButtonBar } from "@/components/ui/buttonBar.tsx";
+import { clientApollo } from "@/api/apolloClient.ts";
 import {
   GetMainMenuDocument,
   GetMainMenuQuery,
 } from "@/generates/gql/graphql.ts";
-import { clientApollo } from "@/api/apolloClient.ts";
 import { MainMenu } from "@/components/nav/MainMenu.tsx";
 
 export async function TheHeader() {
@@ -29,7 +30,7 @@ export async function TheHeader() {
             height={Logo.height}
           />
         </Link>
-        {menu ? <MainMenu menu={menu} /> : ""}
+        <MainMenu menu={menu} />
       </div>
     </header>
   );

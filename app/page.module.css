@@ -337,50 +337,6 @@
     margin-bottom: 32px;
   }
 }
-.questions {
-  padding: 128px 0;
-}
-.questions__container {
-  display: flex;
-}
-.questions__left {
-  min-width: 328px;
-  width: 328px;
-  margin-right: 109px;
-}
-.questions__header {
-  margin-bottom: 16px;
-}
-.questions__abouLink {
-  color: #2405F2;
-  text-decoration: none;
-}
-
-@media screen and (max-width: 1280px) {
-  .questions__left {
-    margin-right: 5em;
-  }
-}
-@media screen and (max-width: 991px) {
-  .questions {
-    padding: 64px 0;
-  }
-  .questions__left {
-    margin-right: 1em;
-  }
-}
-@media screen and (max-width: 991px) {
-  .questions__left {
-    margin-right: 0;
-    margin-bottom: 64px;
-    min-width: unset;
-    width: 100%;
-    max-width: 100%;
-  }
-  .questions__container {
-    flex-direction: column;
-  }
-}
 .contactForm__container {
   display: flex;
   background: url("../public/form-bg.png") no-repeat left 8px center;
